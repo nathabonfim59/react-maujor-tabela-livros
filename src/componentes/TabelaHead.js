@@ -1,13 +1,19 @@
 import React from "react";
 
-const TabelaHead = () => (
+const TabelaHead = (props) => (
   <thead>
     <tr>
       <th colSpan="4">Tabela de Livros</th>
     </tr>
     <tr>
       <th>ISBN</th>
-      <th>Título</th>
+      <th>
+        Título
+        <div className="container-setinhas">
+          <div onClick={ props.ordenarCrescente }>&uArr;</div>
+          <div onClick={ props.ordenarDecrescente }>&dArr;</div>
+        </div>
+      </th>
       <th>Autor</th>
       <th></th>
     </tr>

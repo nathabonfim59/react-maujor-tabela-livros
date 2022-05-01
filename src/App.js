@@ -27,10 +27,30 @@ class App extends Component {
     this.setState({ livros });
   }
 
+  ordenar = ( ) => {
+    return this.state.livros.sort( (a, b) => a.titulo < b.titulo ? -1 : 0);
+  }
+
+  handleOrdenarCrescente = (titulo) => {
+    let livros = this.ordenar();
+
+    this.setState({ livros });
+  }
+
+  handleOrdenarDecrescente = (titulo) => {
+    let livros = this.ordenar();
+    livros.reverse();
+
+    this.setState({ livros });
+  }
+
   render() {
     return (
       <table className="tabela">
-        <TabelaHead/>
+        <TabelaHead
+          ordenarCrescente={ this.handleOrdenarCrescente }
+          ordenarDecrescente={ this.handleOrdenarDecrescente }
+        />
         <TabelaBody
           livros={ this.state.livros }
           removerLinha={ this.handleRemoverLinha }
